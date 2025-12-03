@@ -1,0 +1,9 @@
+com\example\demo\service\MyUserDetailsService.class
+com\example\demo\security\UserPrincipal.class
+com\example\demo\service\JwtService.class
+com\example\demo\ProjectTaskManagementApplication.class
+com\example\demo\repo\TaskRepo.class
+com\example\demo\model\User.class
+com\example\demo\model\Tasks.class
+com\example\demo\repo\UserRepo.class
+com\example\demo\model\TaskStatus.class
