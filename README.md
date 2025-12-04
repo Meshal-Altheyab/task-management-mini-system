@@ -56,7 +56,7 @@ Default configuration in `application.properties`:
 
 ```properties
 spring.datasource.url=jdbc:oracle:thin:@//localhost:1521/XEPDB1
-spring.datasource.username=hibernate
+spring.datasource.username=database
 spring.datasource.password=1234
 
 spring.jpa.hibernate.ddl-auto=update
