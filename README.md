@@ -371,28 +371,3 @@ Suggested order:
 2. Login (copy token)
 3. Task APIs
 4. Report APIs
-
----
-
-<div dir="rtl">
-
-## ملخص سريع بالعربي (Quick Start)
-
-1) شغّل المشروع.
-
-2) سجّل دخول وخذ Token.
-
-3) عشان الأدمن يطلع كل التاسكات:
-- لازم قيمة `role` في جدول `USERS` تكون `ADMIN`.
-
-4) توليد تقرير:
-- Endpoint: `POST /api/reports`
-- Body مثال:
-
-```json
-{ "type": "ALL_TASKS_LIST", "format": "PDF" }
-```
-
-5) في Postman استخدم **Send and Download** عشان ينزل الملف.
-
-</div>
