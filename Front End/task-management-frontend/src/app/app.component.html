@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">Task Management</a>
+
+    <div class="d-flex gap-2">
+      <a class="btn btn-outline-light btn-sm" routerLink="/my-tasks" *ngIf="auth.loggedIn()">
+        مهامي
+      </a>
+
+      <a class="btn btn-outline-light btn-sm" routerLink="/create-task" *ngIf="auth.loggedIn()">
+        إضافة تاسك
+      </a>
+
+      <a class="btn btn-outline-light btn-sm" routerLink="/all-tasks" *ngIf="auth.loggedIn()">
+        كل التاسكات
+      </a>
+
+      <a class="btn btn-outline-light btn-sm" routerLink="/reports" *ngIf="auth.loggedIn()">
+        التقارير
+      </a>
+
+      <a class="btn btn-outline-warning btn-sm" routerLink="/login" *ngIf="!auth.loggedIn()">
+        دخول
+      </a>
+
+      <a class="btn btn-outline-info btn-sm" routerLink="/register" *ngIf="!auth.loggedIn()">
+        تسجيل
+      </a>
+
+      <button class="btn btn-danger btn-sm" (click)="logout()" *ngIf="auth.loggedIn()">
+        خروج
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main class="py-3">
+  <router-outlet></router-outlet>
+</main>

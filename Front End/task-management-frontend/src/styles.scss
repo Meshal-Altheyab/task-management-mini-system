@@ -1,0 +1,12 @@
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+/* Arabic / RTL defaults */
+html, body {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Small UX tweaks */
+.table td, .table th {
+  vertical-align: middle;
+}

@@ -1,0 +1,46 @@
+<div class="container mt-4" style="max-width: 520px;">
+  <h3 class="mb-3">تسجيل جديد</h3>
+
+  <div class="alert alert-danger" *ngIf="errorMsg">{{ errorMsg }}</div>
+  <div class="alert alert-success" *ngIf="successMsg">{{ successMsg }}</div>
+
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="mb-3">
+          <label class="form-label">اسم المستخدم</label>
+          <input class="form-control" formControlName="username" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">البريد</label>
+          <input class="form-control" formControlName="email" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">كلمة المرور</label>
+          <input type="password" class="form-control" formControlName="password" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">الدور (Role)</label>
+          <select class="form-select" formControlName="role">
+            <option value="USER">USER</option>
+            <option value="ADMIN">ADMIN</option>
+          </select>
+          <div class="form-text">
+            عادةً تسجّل USER. خيار ADMIN استخدمه فقط لو انت مسؤول.
+          </div>
+        </div>
+
+        <button class="btn btn-primary w-100" [disabled]="isSubmitting" type="submit">
+          {{ isSubmitting ? 'جاري التسجيل...' : 'تسجيل' }}
+        </button>
+
+        <div class="text-center mt-3">
+          عندك حساب؟ <a routerLink="/login">دخول</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

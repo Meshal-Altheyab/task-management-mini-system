@@ -1,0 +1,39 @@
+<div class="container mt-4">
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h3 class="m-0">كل التاسكات (Admin)</h3>
+
+    <button class="btn btn-outline-dark" (click)="loadAllTasks()">تحديث</button>
+  </div>
+
+  <div class="alert alert-danger" *ngIf="errorMsg">{{ errorMsg }}</div>
+  <div *ngIf="loading">جاري التحميل...</div>
+
+  <table class="table table-bordered table-hover" *ngIf="!loading">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>المستخدم</th>
+        <th>العنوان</th>
+        <th>الحالة</th>
+        <th>التاريخ</th>
+        <th style="width: 120px;">إجراءات</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of tasks">
+        <td>{{ t.id }}</td>
+        <td>{{ t.user?.username || '-' }}</td>
+        <td>{{ t.title }}</td>
+        <td><span class="badge" [ngClass]="badgeClass(t.status)">{{ t.status }}</span></td>
+        <td>{{ t.created_at }}</td>
+        <td>
+          <button class="btn btn-sm btn-info" (click)="details(t)">تفاصيل</button>
+        </td>
+      </tr>
+
+      <tr *ngIf="tasks.length === 0">
+        <td colspan="6" class="text-center">ما فيه بيانات</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

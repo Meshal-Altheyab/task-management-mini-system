@@ -1,0 +1,49 @@
+<div class="container mt-4" style="max-width: 800px;">
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h3 class="m-0">تفاصيل التاسك #{{ id }}</h3>
+
+    <div class="d-flex gap-2">
+      <button class="btn btn-outline-secondary" (click)="back()">رجوع</button>
+      <button class="btn btn-warning" (click)="goEdit()" [disabled]="!task">تعديل</button>
+    </div>
+  </div>
+
+  <div *ngIf="loading">جاري تحميل التفاصيل...</div>
+
+  <div class="alert alert-danger" *ngIf="errorMsg">{{ errorMsg }}</div>
+
+  <div class="card" *ngIf="!loading && task">
+    <div class="card-body">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <div class="fw-bold mb-1">العنوان</div>
+          <div class="border rounded p-2 bg-light">{{ task.title }}</div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="fw-bold mb-1">الحالة</div>
+          <div class="border rounded p-2 bg-light">
+            <span class="badge" [ngClass]="badgeClass(task.status)">{{ task.status }}</span>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="fw-bold mb-1">الوصف</div>
+          <div class="border rounded p-2 bg-light" style="min-height: 90px;">
+            {{ task.description }}
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="fw-bold mb-1">تاريخ الإنشاء</div>
+          <div class="border rounded p-2 bg-light">{{ task.created_at }}</div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="fw-bold mb-1">المستخدم</div>
+          <div class="border rounded p-2 bg-light">{{ task.user?.username || '-' }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="container mt-4">
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h3 class="m-0">مهامي</h3>
+
+    <div class="d-flex gap-2">
+      <a class="btn btn-success" routerLink="/create-task">+ إضافة تاسك</a>
+      <button class="btn btn-outline-dark" type="button" (click)="loadMyTasks()">
+        تحديث
+      </button>
+    </div>
+  </div>
+
+  <div class="alert alert-danger" *ngIf="errorMsg">{{ errorMsg }}</div>
+  <div *ngIf="loading">جاري التحميل...</div>
+
+  <table class="table table-bordered table-hover" *ngIf="!loading">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>العنوان</th>
+        <th>الوصف</th>
+        <th>الحالة</th>
+        <th>التاريخ</th>
+        <th style="width: 220px;">إجراءات</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let t of tasks">
+        <td>{{ t.id }}</td>
+        <td>{{ t.title }}</td>
+        <td>{{ t.description }}</td>
+        <td>
+          <span class="badge" [ngClass]="badgeClass(t.status)">{{ t.status }}</span>
+        </td>
+        <td>{{ t.created_at }}</td>
+        <td>
+          <button class="btn btn-sm btn-info me-2" (click)="details(t)">تفاصيل</button>
+          <button class="btn btn-sm btn-warning me-2" (click)="edit(t)">تعديل</button>
+          <button class="btn btn-sm btn-danger" (click)="remove(t.id)">حذف</button>
+        </td>
+      </tr>
+
+      <tr *ngIf="tasks.length === 0">
+        <td colspan="6" class="text-center">ما فيه مهام</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

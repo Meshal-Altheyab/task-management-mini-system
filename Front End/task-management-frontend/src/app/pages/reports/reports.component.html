@@ -1,0 +1,53 @@
+<div class="container mt-4" style="max-width: 820px;">
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h3 class="m-0">التقارير (JasperReports)</h3>
+    <a class="btn btn-outline-secondary" routerLink="/my-tasks">رجوع</a>
+  </div>
+
+  <div class="alert alert-info" *ngIf="infoMsg">
+    {{ infoMsg }}
+  </div>
+  <div class="alert alert-danger" *ngIf="errorMsg">
+    {{ errorMsg }}
+  </div>
+
+  <div class="card">
+    <div class="card-body">
+      <p class="text-muted mb-3">
+
+      </p>
+
+      <form [formGroup]="form" (ngSubmit)="download()">
+        <div class="row g-3">
+          <div class="col-md-8">
+            <label class="form-label">نوع التقرير</label>
+            <select class="form-select" formControlName="type">
+              <option *ngFor="let t of reportTypes" [value]="t.value">
+                {{ t.label }}
+              </option>
+            </select>
+            <div class="form-text">
+              إذا اخترت تقرير <b>ALL</b> وانت مو أدمن، راح يجيك <b>403</b>.
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">الصيغة</label>
+            <select class="form-select" formControlName="format">
+              <option *ngFor="let f of formats" [value]="f.value">
+                {{ f.label }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mt-3 d-flex gap-2">
+          <button class="btn btn-primary" type="submit" [disabled]="isSubmitting">
+            {{ isSubmitting ? 'جاري تجهيز التقرير...' : 'تحميل التقرير' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
