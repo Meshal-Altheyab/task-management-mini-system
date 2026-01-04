@@ -7,11 +7,9 @@ export const authGuard: CanActivateFn = () => {
   const auth = inject(AuthService);
   const router = inject(Router);
 
-  // إذا مسجل دخول -> كمّل
   if (auth.loggedIn()) {
     return true;
   }
 
-  // غير كذا -> وده صفحة login
   return router.createUrlTree(['/login']);
 };
