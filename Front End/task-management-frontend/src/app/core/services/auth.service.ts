@@ -11,8 +11,7 @@ export interface RegisterRequest {
   username: string;
   email: string;
   password: string;
-  // الباك عندك يدعم role (ADMIN / USER)
-  // لو ما انرسل، الباك ممكن يحطه افتراضي حسب الـ RegistrationService
+
   role?: string;
 }
 
@@ -24,18 +23,14 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  /**
-   * يسوي Login ويرجع توكن (String) من الباك: POST /api/auth/login
-   */
+
   login(req: LoginRequest): Observable<string> {
     return this.http
       .post('/api/auth/login', req, { responseType: 'text' })
       .pipe(tap((token) => this.saveToken(token)));
   }
 
-  /**
-   * يسوي Register: POST /api/auth/register
-   */
+
   register(req: RegisterRequest): Observable<string> {
     return this.http.post('/api/auth/register', req, { responseType: 'text' });
   }
